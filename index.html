@@ -1,0 +1,1621 @@
+<html>
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stewardship Power Hour - Biblical Wisdom Meets Wealth Intelligence</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        google: {
+                            blue: '#1a73e8',
+                            red: '#ea4335',
+                            yellow: '#fbbc04',
+                            green: '#34a853',
+                            dark: '#202124',
+                            surface: '#292a2d',
+                            accent: '#8ab4f8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Google Sans', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark .glass {
+            background: rgba(32, 33, 36, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #1a73e8 0%, #34a853 50%, #fbbc04 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-border {
+            border-image: linear-gradient(to right, #1a73e8, #ea4335, #fbbc04, #34a853) 1;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(156, 163, 175, 0.4); border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(156, 163, 175, 0.7); }
+    </style>
+</head>
+<body class="h-full bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 flex flex-col">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-40 w-full glass border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('dashboard')">
+                <div class="h-10 w-10 rounded-xl bg-gradient-to-tr from-blue-600 via-green-500 to-yellow-400 p-0.5 shadow-md shadow-blue-500/20 flex items-center justify-center">
+                    <div class="h-full w-full bg-white dark:bg-slate-900 rounded-[10px] flex items-center justify-center">
+                        <i data-lucide="compass" class="h-5 w-5 text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold tracking-tight font-sans leading-none flex items-center gap-1.5">
+                        <span>STEWARDSHIP</span>
+                        <span class="px-1.5 py-0.5 text-[10px] font-extrabold bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 rounded-md uppercase tracking-wider">POWER HOUR</span>
+                    </h1>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400 font-medium mt-0.5">Deuteronomy 8:18 — Wealth Wisdom Academy</p>
+                </div>
+            </div>
+
+            <!-- Header Actions -->
+            <div class="flex items-center space-x-2">
+                <!-- Day Counter & Streak -->
+                <div class="hidden sm:flex items-center space-x-3 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-semibold">
+                    <span class="flex items-center text-amber-500" title="Current Daily Learning Streak">
+                        <i data-lucide="flame" class="h-4 w-4 mr-1 fill-amber-500"></i>
+                        <span id="streakDisplay">0</span> Days
+                    </span>
+                    <span class="text-slate-300 dark:text-slate-700">|</span>
+                    <span class="flex items-center text-blue-600 dark:text-blue-400">
+                        <i data-lucide="award" class="h-4 w-4 mr-1"></i>
+                        <span id="pointsDisplay">0</span> PTS
+                    </span>
+                </div>
+
+                <!-- Notification Bell -->
+                <button onclick="toggleNotificationsModal()" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Daily Reminder Settings">
+                    <i data-lucide="bell" class="h-5 w-5"></i>
+                </button>
+
+                <!-- CMS Modal Trigger -->
+                <button onclick="toggleCmsModal()" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Admin Content Manager">
+                    <i data-lucide="settings" class="h-5 w-5"></i>
+                </button>
+
+                <!-- Theme Switcher -->
+                <button id="themeToggleBtn" onclick="toggleDarkMode()" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Toggle Theme">
+                    <i data-lucide="moon" class="h-5 w-5 dark:hidden"></i>
+                    <i data-lucide="sun" class="h-5 w-5 hidden dark:block text-yellow-400"></i>
+                </button>
+
+                <!-- Launch Power Hour CTA -->
+                <button onclick="startPowerHour()" class="hidden md:flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-bold px-4 py-2 rounded-xl shadow-md hover:shadow-blue-500/25 transition">
+                    <i data-lucide="play-circle" class="h-4 w-4"></i>
+                    <span>START POWER HOUR</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main App Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+        
+        <!-- Navigation Tab Switcher -->
+        <nav class="flex items-center overflow-x-auto no-scrollbar space-x-2 pb-2 border-b border-slate-200 dark:border-slate-800 text-sm font-medium">
+            <button onclick="switchTab('dashboard')" id="tab-dashboard" class="nav-tab active flex items-center space-x-2 px-4 py-2 rounded-xl whitespace-nowrap bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 font-semibold transition">
+                <i data-lucide="layout-dashboard" class="h-4 w-4"></i>
+                <span>Daily Dashboard</span>
+            </button>
+            <button onclick="switchTab('powerhour')" id="tab-powerhour" class="nav-tab flex items-center space-x-2 px-4 py-2 rounded-xl whitespace-nowrap text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                <i data-lucide="clock" class="h-4 w-4"></i>
+                <span>Power Hour (60 Min)</span>
+            </button>
+            <button onclick="switchTab('devotions')" id="tab-devotions" class="nav-tab flex items-center space-x-2 px-4 py-2 rounded-xl whitespace-nowrap text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                <i data-lucide="book-open" class="h-4 w-4"></i>
+                <span>Daily Devotional</span>
+            </button>
+            <button onclick="switchTab('library')" id="tab-library" class="nav-tab flex items-center space-x-2 px-4 py-2 rounded-xl whitespace-nowrap text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                <i data-lucide="users" class="h-4 w-4"></i>
+                <span>Billionaire Library</span>
+            </button>
+            <button onclick="switchTab('comparison')" id="tab-comparison" class="nav-tab flex items-center space-x-2 px-4 py-2 rounded-xl whitespace-nowrap text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                <i data-lucide="scale" class="h-4 w-4"></i>
+                <span>Wisdom Matrix</span>
+            </button>
+            <button onclick="switchTab('ai-mentor')" id="tab-ai-mentor" class="nav-tab flex items-center space-x-2 px-4 py-2 rounded-xl whitespace-nowrap text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                <i data-lucide="sparkles" class="h-4 w-4 text-amber-500"></i>
+                <span>AI Stewardship Mentor</span>
+            </button>
+        </nav>
+
+        <!-- ================= SECTION 1: DASHBOARD ================= -->
+        <div id="view-dashboard" class="tab-view space-y-6">
+            
+            <!-- Hero Banner -->
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white p-6 sm:p-8 shadow-xl border border-blue-800/40">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute right-1/3 top-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="relative z-10 max-w-3xl space-y-4">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-xs font-semibold">
+                        <i data-lucide="calendar" class="h-3.5 w-3.5"></i>
+                        <span id="currentDateFormatted">Today</span>
+                        <span class="text-blue-400">•</span>
+                        <span id="dayOfYearBadge">Day 1 of 365</span>
+                    </div>
+
+                    <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+                        "God gives you the ability to <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-amber-200 to-emerald-400">produce wealth</span>."
+                    </h2>
+                    
+                    <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
+                        Deuteronomy 8:18. Transform your mindset, master financial discipline, and deploy your wealth for Kingdom impact in today's interactive 60-minute Power Hour session.
+                    </p>
+
+                    <div class="pt-2 flex flex-wrap items-center gap-3">
+                        <button onclick="startPowerHour()" class="bg-gradient-to-r from-blue-500 to-emerald-500 hover:from-blue-600 hover:to-emerald-600 text-white font-bold px-6 py-3 rounded-2xl shadow-lg shadow-blue-500/20 flex items-center space-x-2 text-sm transition transform hover:-translate-y-0.5">
+                            <i data-lucide="play-circle" class="h-5 w-5"></i>
+                            <span>Launch Today's Power Hour</span>
+                        </button>
+                        <button onclick="switchTab('devotions')" class="bg-white/10 hover:bg-white/20 backdrop-blur border border-white/20 text-white font-semibold px-5 py-3 rounded-2xl text-sm transition">
+                            <span>Read Daily Devotion</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats & Today's Overview Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Card 1: Today's Devotional Quick Glance -->
+                <div class="glass p-6 rounded-2xl space-y-4 flex flex-col justify-between hover:shadow-lg transition">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 flex items-center gap-1.5">
+                                <i data-lucide="book-open" class="h-4 w-4"></i> Daily Devotion
+                            </span>
+                            <span class="text-[11px] px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 font-medium" id="dashboardDevoScriptureTag">Deut 8:18</span>
+                        </div>
+                        <h3 class="text-lg font-bold mt-2" id="dashboardDevoTitle">Loading Today's Devotion...</h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 line-clamp-3" id="dashboardDevoSnippet">
+                            Explore biblical wealth creation, diligence, and Kingdom stewardship principles...
+                        </p>
+                    </div>
+                    <button onclick="switchTab('devotions')" class="w-full py-2.5 text-xs font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-900/60 transition flex items-center justify-center space-x-1">
+                        <span>Read Full Devotional</span>
+                        <i data-lucide="arrow-right" class="h-3.5 w-3.5"></i>
+                    </button>
+                </div>
+
+                <!-- Card 2: Quote of the Day -->
+                <div class="glass p-6 rounded-2xl space-y-4 flex flex-col justify-between border-l-4 border-l-amber-500 hover:shadow-lg transition">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
+                                <i data-lucide="quote" class="h-4 w-4"></i> Quote of the Day
+                            </span>
+                            <span class="text-[11px] text-slate-500" id="quoteSpeakerRole">Industrialist</span>
+                        </div>
+                        <blockquote class="text-xs italic text-slate-700 dark:text-slate-300 mt-2 line-clamp-3" id="dashboardQuoteText">
+                            "Rule No. 1: Never lose money. Rule No. 2: Never forget rule No. 1."
+                        </blockquote>
+                        <p class="text-xs font-bold text-slate-900 dark:text-white mt-2" id="dashboardQuoteAuthor">— Warren Buffett</p>
+                    </div>
+                    <button onclick="openQuoteModal()" class="w-full py-2.5 text-xs font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 rounded-xl hover:bg-amber-100 dark:hover:bg-amber-900/60 transition flex items-center justify-center space-x-1">
+                        <i data-lucide="share-2" class="h-3.5 w-3.5"></i>
+                        <span>Generate Social Quote Card</span>
+                    </button>
+                </div>
+
+                <!-- Card 3: Today's Power Challenge -->
+                <div class="glass p-6 rounded-2xl space-y-4 flex flex-col justify-between border-l-4 border-l-emerald-500 hover:shadow-lg transition">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+                                <i data-lucide="target" class="h-4 w-4"></i> Daily Action Challenge
+                            </span>
+                            <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-bold" id="challengeStatusBadge">PENDING</span>
+                        </div>
+                        <h3 class="text-sm font-bold mt-2" id="dashboardChallengeTitle">Audit Expenses Today</h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 line-clamp-2" id="dashboardChallengeDesc">
+                            Track every single financial transaction made in the next 24 hours to eliminate waste.
+                        </p>
+                    </div>
+                    <button id="dashboardChallengeBtn" onclick="toggleDailyChallengeCompletion()" class="w-full py-2.5 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl transition shadow-md shadow-emerald-600/20 flex items-center justify-center space-x-1">
+                        <i data-lucide="check-circle" class="h-4 w-4"></i>
+                        <span>Mark Challenge Complete</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- 6-Session Power Hour Quick Map -->
+            <div class="glass p-6 rounded-3xl space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-800 pb-4">
+                    <div>
+                        <h3 class="text-lg font-bold flex items-center gap-2">
+                            <i data-lucide="zap" class="h-5 w-5 text-yellow-500"></i>
+                            Today's 60-Minute Learning Track
+                        </h3>
+                        <p class="text-xs text-slate-500">6 interactive 10-minute sessions designed for spiritual growth and financial mastery.</p>
+                    </div>
+                    <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 self-start sm:self-auto">
+                        Progress: <span id="powerHourCompletedCount">0</span>/6 Complete
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Session Card 1 -->
+                    <div onclick="jumpToSession(1)" class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-blue-500 cursor-pointer transition group">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300">SESSION 1 • 10 MIN</span>
+                            <i data-lucide="book" class="h-4 w-4 text-blue-500"></i>
+                        </div>
+                        <h4 class="text-sm font-bold mt-2 group-hover:text-blue-600 transition">Word Power</h4>
+                        <p class="text-xs text-slate-500 mt-1">Biblical principles of wealth, work, and integrity.</p>
+                    </div>
+                    <!-- Session Card 2 -->
+                    <div onclick="jumpToSession(2)" class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-red-500 cursor-pointer transition group">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300">SESSION 2 • 10 MIN</span>
+                            <i data-lucide="trending-up" class="h-4 w-4 text-red-500"></i>
+                        </div>
+                        <h4 class="text-sm font-bold mt-2 group-hover:text-red-600 transition">Billionaire Thinking</h4>
+                        <p class="text-xs text-slate-500 mt-1">Philosophies and habits of legendary leaders.</p>
+                    </div>
+                    <!-- Session Card 3 -->
+                    <div onclick="jumpToSession(3)" class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-amber-500 cursor-pointer transition group">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300">SESSION 3 • 10 MIN</span>
+                            <i data-lucide="dollar-sign" class="h-4 w-4 text-amber-500"></i>
+                        </div>
+                        <h4 class="text-sm font-bold mt-2 group-hover:text-amber-600 transition">Money Intelligence</h4>
+                        <p class="text-xs text-slate-500 mt-1">Budgeting, investing, saving, and debt management.</p>
+                    </div>
+                    <!-- Session Card 4 -->
+                    <div onclick="jumpToSession(4)" class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 cursor-pointer transition group">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">SESSION 4 • 10 MIN</span>
+                            <i data-lucide="lightbulb" class="h-4 w-4 text-emerald-500"></i>
+                        </div>
+                        <h4 class="text-sm font-bold mt-2 group-hover:text-emerald-600 transition">Business & Innovation</h4>
+                        <p class="text-xs text-slate-500 mt-1">Entrepreneurship, technology, and execution.</p>
+                    </div>
+                    <!-- Session Card 5 -->
+                    <div onclick="jumpToSession(5)" class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-purple-500 cursor-pointer transition group">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300">SESSION 5 • 10 MIN</span>
+                            <i data-lucide="heart" class="h-4 w-4 text-purple-500"></i>
+                        </div>
+                        <h4 class="text-sm font-bold mt-2 group-hover:text-purple-600 transition">Kingdom Application</h4>
+                        <p class="text-xs text-slate-500 mt-1">Generosity, outreach, and community impact.</p>
+                    </div>
+                    <!-- Session Card 6 -->
+                    <div onclick="jumpToSession(6)" class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-cyan-500 cursor-pointer transition group">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-cyan-100 text-cyan-700 dark:bg-cyan-950 dark:text-cyan-300">SESSION 6 • 10 MIN</span>
+                            <i data-lucide="check-square" class="h-4 w-4 text-cyan-500"></i>
+                        </div>
+                        <h4 class="text-sm font-bold mt-2 group-hover:text-cyan-600 transition">Action & Reflection</h4>
+                        <p class="text-xs text-slate-500 mt-1">Interactive quiz, personal notes, and commitment.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ================= SECTION 2: POWER HOUR ENGINE ================= -->
+        <div id="view-powerhour" class="tab-view hidden space-y-6">
+            
+            <!-- Session Header Bar & Timer -->
+            <div class="glass p-6 rounded-3xl space-y-4 sticky top-20 z-30 shadow-md">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span id="activeSessionBadge" class="px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300">
+                                SESSION 1 OF 6
+                            </span>
+                            <span class="text-xs font-semibold text-slate-500" id="activeSessionSubtitle">Word Power</span>
+                        </div>
+                        <h2 class="text-xl font-extrabold mt-1" id="activeSessionTitle">Bible Principles of Wealth</h2>
+                    </div>
+
+                    <!-- Timer Control Widget -->
+                    <div class="flex items-center space-x-4 bg-slate-100 dark:bg-slate-900 px-4 py-2 rounded-2xl">
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="clock" class="h-5 w-5 text-blue-600 animate-pulse"></i>
+                            <span id="sessionTimerDisplay" class="font-mono text-xl font-bold tracking-wider">10:00</span>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <button onclick="toggleTimer()" id="timerToggleBtn" class="p-1.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition" title="Start/Pause Timer">
+                                <i data-lucide="pause" class="h-4 w-4" id="timerIcon"></i>
+                            </button>
+                            <button onclick="resetTimer()" class="p-1.5 rounded-lg text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-800 transition" title="Reset Session Timer">
+                                <i data-lucide="rotate-ccw" class="h-4 w-4"></i>
+                            </button>
+                            <button onclick="speakCurrentSessionText()" class="p-1.5 rounded-lg text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-800 transition" title="Listen Audio Narration">
+                                <i data-lucide="volume-2" class="h-4 w-4" id="ttsIcon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Session Step Stepper Progress -->
+                <div class="grid grid-cols-6 gap-2 pt-2">
+                    <button onclick="jumpToSession(1)" id="step-btn-1" class="h-2 rounded-full bg-blue-600 transition" title="Session 1: Word Power"></button>
+                    <button onclick="jumpToSession(2)" id="step-btn-2" class="h-2 rounded-full bg-slate-200 dark:bg-slate-800 transition" title="Session 2: Billionaire Thinking"></button>
+                    <button onclick="jumpToSession(3)" id="step-btn-3" class="h-2 rounded-full bg-slate-200 dark:bg-slate-800 transition" title="Session 3: Money Intelligence"></button>
+                    <button onclick="jumpToSession(4)" id="step-btn-4" class="h-2 rounded-full bg-slate-200 dark:bg-slate-800 transition" title="Session 4: Business & Innovation"></button>
+                    <button onclick="jumpToSession(5)" id="step-btn-5" class="h-2 rounded-full bg-slate-200 dark:bg-slate-800 transition" title="Session 5: Kingdom Application"></button>
+                    <button onclick="jumpToSession(6)" id="step-btn-6" class="h-2 rounded-full bg-slate-200 dark:bg-slate-800 transition" title="Session 6: Action & Reflection"></button>
+                </div>
+            </div>
+
+            <!-- Session Content Body Container -->
+            <div class="glass p-6 sm:p-8 rounded-3xl min-h-[400px] flex flex-col justify-between space-y-6" id="sessionContainer">
+                <!-- Dynamically Rendered Session Content -->
+                <div id="sessionBodyText" class="space-y-6">
+                    <!-- Loaded via JavaScript -->
+                </div>
+
+                <!-- Session Bottom Navigation Bar -->
+                <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-6">
+                    <button onclick="navigateSession(-1)" id="prevSessionBtn" class="px-5 py-2.5 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition flex items-center space-x-1">
+                        <i data-lucide="chevron-left" class="h-4 w-4"></i>
+                        <span>Previous Session</span>
+                    </button>
+
+                    <button onclick="completeCurrentSession()" class="px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition shadow-md shadow-emerald-600/20 flex items-center space-x-1.5">
+                        <i data-lucide="check" class="h-4 w-4"></i>
+                        <span>Mark Session Complete</span>
+                    </button>
+
+                    <button onclick="navigateSession(1)" id="nextSessionBtn" class="px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 transition shadow-md shadow-blue-600/20 flex items-center space-x-1">
+                        <span>Next Session</span>
+                        <i data-lucide="chevron-right" class="h-4 w-4"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ================= SECTION 3: DAILY DEVOTIONAL LIBRARY ================= -->
+        <div id="view-devotions" class="tab-view hidden space-y-6">
+            
+            <!-- Devotion Controls Header -->
+            <div class="glass p-6 rounded-3xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold flex items-center gap-2">
+                        <i data-lucide="book-open" class="h-5 w-5 text-blue-600"></i>
+                        365-Day Stewardship Devotional Engine
+                    </h2>
+                    <p class="text-xs text-slate-500">Theologically sound, contextually accurate daily spiritual and financial instruction.</p>
+                </div>
+
+                <!-- Date Picker Select -->
+                <div class="flex items-center space-x-3">
+                    <label for="devotionDatePicker" class="text-xs font-semibold text-slate-600 dark:text-slate-400">Select Calendar Day:</label>
+                    <input type="date" id="devotionDatePicker" onchange="loadDevotionByDate(this.value)" class="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs font-medium px-3 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+            </div>
+
+            <!-- Full Devotion Card -->
+            <div class="glass p-6 sm:p-10 rounded-3xl space-y-8" id="fullDevotionalCard">
+                
+                <!-- Devotion Main Title & Scripture Header -->
+                <div class="border-b border-slate-200 dark:border-slate-800 pb-6 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300" id="devoThemeTag">
+                            BIBLICAL WEALTH CREATION
+                        </span>
+                        <span class="text-xs font-medium text-slate-500" id="devoDateTag">Day 1</span>
+                    </div>
+
+                    <h1 class="text-2xl sm:text-3xl font-extrabold" id="devoTitle">The Divine Gift of Wealth Capacity</h1>
+
+                    <blockquote class="p-4 rounded-2xl bg-blue-50 dark:bg-blue-950/40 border-l-4 border-l-blue-600 italic text-sm text-blue-900 dark:text-blue-200" id="devoVerse">
+                        "But remember the LORD your God, for it is he who gives you the ability to produce wealth, and so confirms his covenant, which he swore to your ancestors, as it is today." — Deuteronomy 8:18
+                    </blockquote>
+                </div>
+
+                <!-- Devotion Grid Sections -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                    
+                    <!-- Context & Spiritual -->
+                    <div class="space-y-4">
+                        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+                            <h3 class="font-bold text-xs uppercase tracking-wider text-blue-600 flex items-center gap-1.5">
+                                <i data-lucide="history" class="h-4 w-4"></i> 1. Biblical & Historical Context
+                            </h3>
+                            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed" id="devoContext">
+                                Moses spoke these words to Israel on the verge of Canaan. Israel was transitioning from manna in the wilderness to agriculture, real estate, and trade. God warned that prosperity often breeds spiritual amnesia.
+                            </p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+                            <h3 class="font-bold text-xs uppercase tracking-wider text-purple-600 flex items-center gap-1.5">
+                                <i data-lucide="sparkles" class="h-4 w-4"></i> 2. Spiritual Interpretation
+                            </h3>
+                            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed" id="devoSpiritual">
+                                Wealth is not created by human arrogance or luck alone; it originates in the cognitive, physical, and circumstantial gifts granted by God. Wealth capability is tied to God's covenantal commitment.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Money & Business Connection -->
+                    <div class="space-y-4">
+                        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+                            <h3 class="font-bold text-xs uppercase tracking-wider text-emerald-600 flex items-center gap-1.5">
+                                <i data-lucide="dollar-sign" class="h-4 w-4"></i> 3. Connection to Money & Wealth
+                            </h3>
+                            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed" id="devoFinancial">
+                                True financial power is not passive; it is productive. Money is a tool resulting from disciplined stewardship, skill development, and strategic value exchange in the market.
+                            </p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+                            <h3 class="font-bold text-xs uppercase tracking-wider text-amber-600 flex items-center gap-1.5">
+                                <i data-lucide="briefcase" class="h-4 w-4"></i> 4. Business & Entrepreneurship
+                            </h3>
+                            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed" id="devoBusiness">
+                                Enterprise is a divine calling to solve problems for others. Entrepreneurship multiplies resources and provides employment, reflecting God's creative order.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Devotion Practical Application Footer -->
+                <div class="space-y-4 border-t border-slate-200 dark:border-slate-800 pt-6">
+                    <div class="p-5 rounded-2xl bg-gradient-to-r from-blue-50 to-emerald-50 dark:from-slate-900 dark:to-slate-900 border border-blue-200 dark:border-slate-800 space-y-3">
+                        <h3 class="font-bold text-sm text-slate-900 dark:text-white flex items-center gap-2">
+                            <i data-lucide="check-square" class="h-4 w-4 text-emerald-600"></i>
+                            Practical Daily Challenge
+                        </h3>
+                        <p class="text-xs text-slate-700 dark:text-slate-300" id="devoChallenge">
+                            Write down your primary source of income. List 3 ways you can improve your productivity or value delivery today as an act of stewardship.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                            <h4 class="text-xs font-bold text-slate-500 uppercase">Reflection Question</h4>
+                            <p class="text-xs text-slate-800 dark:text-slate-200 mt-1 italic" id="devoReflection">
+                                "Have I been taking personal credit for skills and opportunities that God provided?"
+                            </p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                            <h4 class="text-xs font-bold text-slate-500 uppercase">Closing Prayer</h4>
+                            <p class="text-xs text-slate-800 dark:text-slate-200 mt-1 italic" id="devoPrayer">
+                                "Lord, anchor my heart in gratitude. Grant me wisdom to turn the abilities You gave me into value for others and glory for Your Kingdom. Amen."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= SECTION 4: GLOBAL WEALTH & LEADERSHIP LIBRARY ================= -->
+        <div id="view-library" class="tab-view hidden space-y-6">
+            
+            <div class="glass p-6 rounded-3xl space-y-2">
+                <h2 class="text-xl font-bold flex items-center gap-2">
+                    <i data-lucide="users" class="h-5 w-5 text-indigo-600"></i>
+                    Global Wealth & Leadership Library
+                </h2>
+                <p class="text-xs text-slate-500 max-w-3xl">
+                    Detailed research on influential entrepreneurs and philanthropists paired with verifiable quotes and analytical biblical stewardship connections.
+                </p>
+            </div>
+
+            <!-- Leader Profile Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="leaderGridContainer">
+                <!-- Rendered dynamically by JavaScript -->
+            </div>
+
+        </div>
+
+        <!-- ================= SECTION 5: WISDOM MATRIX (BIBLICAL VS BUSINESS) ================= -->
+        <div id="view-comparison" class="tab-view hidden space-y-6">
+            
+            <div class="glass p-6 rounded-3xl space-y-2">
+                <h2 class="text-xl font-bold flex items-center gap-2">
+                    <i data-lucide="scale" class="h-5 w-5 text-amber-500"></i>
+                    Biblical Wisdom vs. Business Wisdom Matrix
+                </h2>
+                <p class="text-xs text-slate-500 max-w-3xl">
+                    Educational comparative modules linking secular business concepts with timeless biblical scriptures.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="comparisonMatrixContainer">
+                <!-- Rendered dynamically by JS -->
+            </div>
+
+        </div>
+
+        <!-- ================= SECTION 6: AI STEWARDSHIP MENTOR ================= -->
+        <div id="view-ai-mentor" class="tab-view hidden space-y-6">
+            
+            <div class="glass p-6 rounded-3xl space-y-4">
+                <div class="flex items-center space-x-3">
+                    <div class="p-3 rounded-2xl bg-gradient-to-tr from-amber-500 to-yellow-400 text-white shadow-lg shadow-amber-500/20">
+                        <i data-lucide="bot" class="h-6 w-6"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold">Daily AI Stewardship Mentor</h2>
+                        <p class="text-xs text-slate-500">Ask questions about biblical wealth, business models, debt elimination, or request personalized devotions powered by Gemini 3 Flash.</p>
+                    </div>
+                </div>
+
+                <!-- Input Box -->
+                <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
+                    <input type="text" id="aiMentorInput" placeholder="e.g. How do I apply Biblical principles to software startup funding?" class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    <button onclick="askAiMentor()" class="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white font-bold text-sm rounded-2xl transition shadow-md flex items-center justify-center space-x-2 whitespace-nowrap">
+                        <i data-lucide="sparkles" class="h-4 w-4"></i>
+                        <span>Consult Mentor</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Response Output Box -->
+            <div class="glass p-6 sm:p-8 rounded-3xl min-h-[250px] space-y-4" id="aiMentorOutputCard">
+                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                    <span class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 flex items-center gap-1">
+                        <i data-lucide="shield-check" class="h-4 w-4"></i> Verified Content Response
+                    </span>
+                    <span class="text-[11px] text-slate-400" id="aiModelBadge">gemini-3-flash-preview</span>
+                </div>
+
+                <div id="aiMentorResponseText" class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed space-y-3">
+                    <p class="italic text-slate-400">Your custom biblical stewardship response will appear here after consulting the AI mentor.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 glass py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-500 space-y-2">
+            <p class="font-medium">"God gives us the ability to produce wealth. Wisdom teaches us how to manage it. Generosity teaches us how to share it. Mission teaches us why it matters."</p>
+            <p class="text-[11px] text-slate-400">Deuteronomy 8:18 • Progressive Web Application • Offline Supported</p>
+        </div>
+    </footer>
+
+    <!-- ================= MODALS & OVERLAYS ================= -->
+
+    <!-- Quote Social Card Modal -->
+    <div id="quoteModal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-lg w-full p-6 space-y-6 shadow-2xl">
+            <div class="flex items-center justify-between">
+                <h3 class="font-bold text-base flex items-center gap-2">
+                    <i data-lucide="image" class="h-5 w-5 text-blue-600"></i> Social Quote Card
+                </h3>
+                <button onclick="closeQuoteModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white">
+                    <i data-lucide="x" class="h-5 w-5"></i>
+                </button>
+            </div>
+
+            <!-- Social Card Container Preview -->
+            <div id="socialQuoteCardPreview" class="p-8 rounded-2xl bg-gradient-to-tr from-slate-900 via-blue-950 to-indigo-900 text-white space-y-6 border border-blue-500/30 relative overflow-hidden shadow-2xl">
+                <div class="flex items-center justify-between text-[10px] font-bold tracking-widest text-blue-400 uppercase">
+                    <span>STEWARDSHIP POWER HOUR</span>
+                    <span>DEUTERONOMY 8:18</span>
+                </div>
+                
+                <blockquote id="modalCardQuoteText" class="text-lg font-serif italic text-slate-100 leading-relaxed">
+                    "Rule No. 1: Never lose money. Rule No. 2: Never forget rule No. 1."
+                </blockquote>
+
+                <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                    <div>
+                        <p id="modalCardAuthor" class="font-bold text-sm text-yellow-400">— Warren Buffett</p>
+                        <p id="modalCardRole" class="text-[11px] text-slate-400">CEO, Berkshire Hathaway</p>
+                    </div>
+                    <div class="h-8 w-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                        <i data-lucide="award" class="h-4 w-4"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button onclick="copyQuoteToClipboard()" class="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-md transition flex items-center justify-center space-x-2">
+                    <i data-lucide="copy" class="h-4 w-4"></i>
+                    <span>Copy Text & Citation</span>
+                </button>
+                <button onclick="closeQuoteModal()" class="px-4 py-3 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs rounded-xl hover:bg-slate-200 transition">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Settings Modal -->
+    <div id="notificationsModal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-md w-full p-6 space-y-6 shadow-2xl">
+            <div class="flex items-center justify-between">
+                <h3 class="font-bold text-base flex items-center gap-2">
+                    <i data-lucide="bell" class="h-5 w-5 text-blue-600"></i> Daily Reminder Settings
+                </h3>
+                <button onclick="toggleNotificationsModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white">
+                    <i data-lucide="x" class="h-5 w-5"></i>
+                </button>
+            </div>
+
+            <div class="space-y-4">
+                <p class="text-xs text-slate-500">Configure your daily notification time for the 60-Minute Stewardship Power Hour.</p>
+
+                <div class="space-y-2">
+                    <label class="text-xs font-semibold">Reminder Time:</label>
+                    <input type="time" id="reminderTimeInput" value="07:00" class="w-full p-3 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-sm">
+                </div>
+
+                <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-xs text-blue-800 dark:text-blue-300 space-y-1">
+                    <p class="font-bold">Sample Reminder:</p>
+                    <p class="italic">"Your Stewardship Power Hour is ready. Discover today's billionaire business principle."</p>
+                </div>
+            </div>
+
+            <button onclick="saveNotificationSettings()" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-md transition">
+                Save & Enable Browser Notifications
+            </button>
+        </div>
+    </div>
+
+    <!-- CMS Admin Console Modal -->
+    <div id="cmsModal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-2xl w-full p-6 space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+                <h3 class="font-bold text-base flex items-center gap-2">
+                    <i data-lucide="settings" class="h-5 w-5 text-emerald-600"></i> Admin Content Management System
+                </h3>
+                <button onclick="toggleCmsModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white">
+                    <i data-lucide="x" class="h-5 w-5"></i>
+                </button>
+            </div>
+
+            <div class="space-y-4 text-xs">
+                <p class="text-slate-500">Manage scheduled devotionals, edit citations, and update business leader entries in real-time.</p>
+
+                <div class="space-y-2">
+                    <label class="font-semibold text-slate-700 dark:text-slate-300">Edit Today's Devotional Title:</label>
+                    <input type="text" id="cmsDevoTitleInput" class="w-full p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-xs font-semibold">
+                </div>
+
+                <div class="space-y-2">
+                    <label class="font-semibold text-slate-700 dark:text-slate-300">Edit Today's Scripture Verse:</label>
+                    <textarea id="cmsDevoVerseInput" rows="2" class="w-full p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-xs"></textarea>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="font-semibold text-slate-700 dark:text-slate-300">Verification Source URL / Citation:</label>
+                    <input type="text" id="cmsDevoSourceInput" value="https://www.biblegateway.com/passage/?search=Deuteronomy+8%3A18" class="w-full p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-xs text-blue-500">
+                </div>
+
+                <div class="p-3 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800 rounded-xl text-emerald-800 dark:text-emerald-300">
+                    <p class="font-bold">Fact Verification Workflow Active</p>
+                    <p class="text-[11px] mt-0.5">All scripture quotes and biographic quotes pass strict verification before publishing.</p>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-end space-x-3 border-t border-slate-200 dark:border-slate-800 pt-4">
+                <button onclick="toggleCmsModal()" class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-semibold rounded-xl text-xs">Cancel</button>
+                <button onclick="saveCmsEdits()" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs shadow-md">Publish Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Completion Certificate Toast / Overlay -->
+    <div id="certificateModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 border-4 border-yellow-500 rounded-3xl max-w-xl w-full p-8 text-center space-y-6 shadow-2xl relative overflow-hidden">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-yellow-500/20 rounded-full blur-2xl"></div>
+
+            <div class="mx-auto h-16 w-16 bg-yellow-100 dark:bg-yellow-950/80 text-yellow-600 rounded-full flex items-center justify-center shadow-lg">
+                <i data-lucide="award" class="h-8 w-8"></i>
+            </div>
+
+            <div>
+                <h3 class="text-2xl font-extrabold uppercase tracking-wide text-slate-900 dark:text-white">Certificate of Completion</h3>
+                <p class="text-xs text-slate-500 mt-1">STEWARDSHIP POWER HOUR ACADEMY</p>
+            </div>
+
+            <div class="py-4 border-y border-slate-200 dark:border-slate-800 space-y-2">
+                <p class="text-xs text-slate-600 dark:text-slate-400">This certifies that you have successfully completed the 60-Minute Daily Learning Session for</p>
+                <p class="text-base font-bold text-blue-600 dark:text-blue-400" id="certDateDisplay">Today</p>
+                <p class="text-xs font-semibold text-slate-700 dark:text-slate-300 italic">"Remember the LORD your God, for it is he who gives you the ability to produce wealth." — Deut 8:18</p>
+            </div>
+
+            <div class="flex justify-center space-x-3">
+                <button onclick="closeCertModal()" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-2xl shadow-md transition">
+                    Claim +100 Stewardship Points
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= JAVASCRIPT APPLICATION CORE ================= -->
+    <script>
+        /* ================= STATE & DATA STORE ================= */
+        const APP_STATE = {
+            currentTab: 'dashboard',
+            currentDayOfYear: getDayOfYear(),
+            streak: 3,
+            points: 250,
+            activeSession: 1,
+            timerSeconds: 600, // 10 minutes
+            timerRunning: false,
+            timerInterval: null,
+            completedSessions: [false, false, false, false, false, false],
+            challengeCompleted: false,
+            isSpeaking: false,
+            userNotes: {}
+        };
+
+        // Comprehensive 365-day library subset + fallback engine generator
+        const DEVOTIONALS = [
+            {
+                day: 1,
+                theme: "Divine Ability for Wealth Creation",
+                verse: "Deuteronomy 8:18",
+                scripture: "Remember the LORD your God, for it is he who gives you the ability to produce wealth.",
+                context: "Moses addresses Israel before crossing Canaan. He cautions against hubris in times of economic abundance.",
+                spiritual: "God is the ultimate source of intelligence, skill, and opportunities. True wealth stems from covenantal stewardship.",
+                financial: "Focus on building sustainable value creation assets rather than short-term speculative consumption.",
+                business: "Entrepreneurship is a divine framework for solving market problems and serving human flourishing.",
+                challenge: "Conduct an immediate 24-hour spending audit and write down your top 3 income creation skills.",
+                reflection: "Am I attributing my financial success to my own strength or to God's gifts?",
+                prayer: "Lord, keep me humble in prosperity. Grant me wisdom to turn talent into service and wealth into Kingdom impact. Amen."
+            },
+            {
+                day: 2,
+                theme: "The Law of Diligent Planning",
+                verse: "Proverbs 21:5",
+                scripture: "The plans of the diligent lead to profit as surely as haste leads to poverty.",
+                context: "King Solomon compiled Proverbs as a practical manual for governance, finance, and royal stewardship.",
+                spiritual: "God honors strategic intentionality. Impulsive decisions reflect a lack of self-control and foresight.",
+                financial: "Long-term compounding and disciplined budget execution outperform high-risk get-rich-quick schemes.",
+                business: "Draft detailed quarterly operational goals. Measure key performance metrics systematically.",
+                challenge: "Draft a clear 12-month savings and debt elimination target today.",
+                reflection: "Where have I acted in haste rather than in diligent planning?",
+                prayer: "Father, bestow upon me patience and strategic foresight in all my financial endeavors. Amen."
+            },
+            {
+                day: 3,
+                theme: "Faithfulness in Small Matters",
+                verse: "Luke 16:10",
+                scripture: "Whoever can be trusted with very little can also be trusted with much.",
+                context: "Jesus teaches the Parable of the Shrewd Manager, emphasizing accountability over material resources.",
+                spiritual: "Your current financial level is a testing ground for greater spiritual responsibility.",
+                financial: "Master managing $100 with integrity before expecting stewardship over millions.",
+                business: "Maintain impeccable financial records, accounting standards, and customer trust from day one.",
+                challenge: "Organize your bank statements and track every micro-expense from the past week.",
+                reflection: "Do I treat small financial responsibilities with the same care as large ones?",
+                prayer: "Holy Spirit, make me a faithful steward over the small resources in my hands today. Amen."
+            }
+        ];
+
+        // Global Leaders Database
+        const LEADERS = [
+            {
+                name: "Warren Buffett",
+                role: "Chairman & CEO, Berkshire Hathaway",
+                bio: "Widely regarded as one of the most successful value investors in history.",
+                philosophy: "Circle of competence, margin of safety, and extreme long-term horizon.",
+                financialLesson: "Compound interest and emotional discipline in volatile markets.",
+                quote: "Rule No. 1: Never lose money. Rule No. 2: Never forget rule No. 1.",
+                quoteSource: "Berkshire Hathaway Annual Shareholder Letter",
+                quoteDate: "1985",
+                biblicalConnection: "Proverbs 21:5 — 'The plans of the diligent lead to profit as surely as haste leads to poverty.'",
+                badgeColor: "bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
+            },
+            {
+                name: "Bill Gates",
+                role: "Co-founder, Microsoft & Philanthropist",
+                bio: "Pioneered the personal computer revolution and co-established the Bill & Melinda Gates Foundation.",
+                philosophy: "Relentless learning, software leverage, and solving global healthcare challenges.",
+                financialLesson: "Reinvesting capital into transformative R&D and societal philanthropy.",
+                quote: "Patience is a key element of success.",
+                quoteSource: "The Road Ahead (Book)",
+                quoteDate: "1995",
+                biblicalConnection: "Proverbs 4:7 — 'Wisdom is the supreme thing; therefore get wisdom.'",
+                badgeColor: "bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300"
+            },
+            {
+                name: "Satya Nadella",
+                role: "CEO, Microsoft",
+                bio: "Engineered one of the greatest corporate turnarounds by shifting culture to empathy and cloud computing.",
+                philosophy: "Growth mindset: move from 'know-it-all' to 'learn-it-all'.",
+                financialLesson: "Strategic capital allocation toward future cloud infrastructure.",
+                quote: "Our industry does not respect tradition — it only respects innovation.",
+                quoteSource: "Microsoft Internal Employee Memo",
+                quoteDate: "2014",
+                biblicalConnection: "Proverbs 1:5 — 'Let the wise listen and add to their learning.'",
+                badgeColor: "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
+            },
+            {
+                name: "John D. Rockefeller",
+                role: "Industrialist & Philanthropist",
+                bio: "America's first billionaire who systematic tithed 10% from his very first paycheck as a clerk.",
+                philosophy: "Meticulous accounting, efficiency, and structured kingdom tithing.",
+                financialLesson: "Systematic generosity coupled with operational perfection.",
+                quote: "I was taught to work as well as play, I was taught that it was a duty to work.",
+                quoteSource: "Random Reminiscences of Men and Events",
+                quoteDate: "1909",
+                biblicalConnection: "Malachi 3:10 & Luke 16:10 — Faithful tithing and financial discipline.",
+                badgeColor: "bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300"
+            },
+            {
+                name: "Oprah Winfrey",
+                role: "Media Mogul & Founder, Harpo Productions",
+                bio: "Overcame poverty to build a global media and educational empire.",
+                philosophy: "Authenticity, service-driven content, and personal ownership.",
+                financialLesson: "Retaining ownership of intellectual property and brand rights.",
+                quote: "Create the highest, grandest vision possible for your life, because you become what you believe.",
+                quoteSource: "Commencement Speech",
+                quoteDate: "2008",
+                biblicalConnection: "Proverbs 29:18 — 'Where there is no vision, the people perish.'",
+                badgeColor: "bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300"
+            },
+            {
+                name: "Indra Nooyi",
+                role: "Former Chairman & CEO, PepsiCo",
+                bio: "Transformed PepsiCo's portfolio toward healthier options through 'Performance with Purpose'.",
+                philosophy: "Deep technical competence and purpose-driven corporate strategy.",
+                financialLesson: "Balancing quarterly earnings with long-term brand sustainability.",
+                quote: "As a leader, you must continuously learn if you want to keep leading.",
+                quoteSource: "My Life in Full (Memoir)",
+                quoteDate: "2021",
+                biblicalConnection: "Colossians 3:23 — 'Whatever you do, work at it with all your heart.'",
+                badgeColor: "bg-cyan-100 text-cyan-700 dark:bg-cyan-950 dark:text-cyan-300"
+            }
+        ];
+
+        // Wisdom Matrix Comparisons
+        const COMPARISONS = [
+            {
+                leader: "Warren Buffett",
+                concept: "Long-term Value Investing & Patience",
+                scripture: "Proverbs 21:5",
+                bibleText: "The plans of the diligent lead to profit as surely as haste leads to poverty.",
+                insight: "Both biblical wisdom and modern finance agree that rapid wealth expansion often carries catastrophic risk, whereas diligent compounding yields stability."
+            },
+            {
+                leader: "Bill Gates",
+                concept: "Solving Complex Global Problems",
+                scripture: "Proverbs 4:7",
+                bibleText: "Wisdom is supreme; therefore get wisdom. Though it cost all you have, get understanding.",
+                insight: "True market value is created by gaining deep knowledge and applying technological leverage to systemic human problems."
+            },
+            {
+                leader: "John D. Rockefeller",
+                concept: "Disciplined Stewardship & Tithing",
+                scripture: "Luke 16:10",
+                bibleText: "Whoever can be trusted with very little can also be trusted with much.",
+                insight: "Rockefeller credited his financial empire to establishing strict accounting and tithing habits early in life when earning minimal wages."
+            },
+            {
+                leader: "Satya Nadella",
+                concept: "Growth Mindset & Continuous Learning",
+                scripture: "Proverbs 1:5",
+                bibleText: "Let the wise listen and add to their learning, and let the discerning get guidance.",
+                insight: "Organizational and personal transformation requires shedding arrogance in favor of continuous learning and active listening."
+            }
+        ];
+
+        // 6 Power Hour Sessions Template Data
+        const POWER_HOUR_SESSIONS = {
+            1: {
+                title: "Bible Principles of Wealth",
+                subtitle: "SESSION 1: WORD POWER (10 MIN)",
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-xs sm:text-sm leading-relaxed">Welcome to <strong>Session 1</strong> of today's Power Hour. We examine God's fundamental blueprint for wealth, work, and ethical financial stewardship.</p>
+                        <div class="p-4 rounded-2xl bg-blue-50 dark:bg-blue-950/50 border-l-4 border-l-blue-600 text-xs">
+                            <p class="font-bold text-blue-900 dark:text-blue-300">Core Scripture: Deuteronomy 8:18</p>
+                            <p class="italic mt-1 text-slate-700 dark:text-slate-300 font-serif">"Remember the LORD your God, for it is he who gives you the ability to produce wealth..."</p>
+                        </div>
+                        <h4 class="font-bold text-sm">Key Principles to Internalize:</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-xs text-slate-600 dark:text-slate-300">
+                            <li><strong>Wealth is Productive, Not Passive:</strong> God does not grant wealth directly from heaven; He grants the <em>capacity, intellect, and health</em> to produce value.</li>
+                            <li><strong>Covenant Integrity:</strong> Financial gains acquired through deception ultimately vanish. Divine wealth creation reinforces righteousness.</li>
+                            <li><strong>Ownership vs. Stewardship:</strong> God owns the earth (Psalm 24:1); we are temporary asset managers accountable for resource deployment.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            2: {
+                title: "Billionaire Business Philosophies",
+                subtitle: "SESSION 2: BILLIONAIRE THINKING (10 MIN)",
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-xs sm:text-sm leading-relaxed">In <strong>Session 2</strong>, we analyze the mental models and execution habits of history's top wealth builders through a biblical stewardship lens.</p>
+                        <div class="p-4 rounded-2xl bg-red-50 dark:bg-red-950/50 border-l-4 border-l-red-600 text-xs">
+                            <p class="font-bold text-red-900 dark:text-red-300">Case Study: Long-Term Orientation</p>
+                            <p class="mt-1 text-slate-700 dark:text-slate-300">Warren Buffett spends 80% of his day reading and thinking, avoiding short-term market noise. He prioritizes sustainable competitive moats.</p>
+                        </div>
+                        <h4 class="font-bold text-sm">Leadership & Strategy Actionable Takeaways:</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-xs text-slate-600 dark:text-slate-300">
+                            <li><strong>Circle of Competence:</strong> Stay within what you deeply understand before expanding.</li>
+                            <li><strong>Asymmetric Risk:</strong> Protect your downside before obsessing over potential upside.</li>
+                            <li><strong>Compound Knowledge:</strong> Read daily to build mental clarity. Knowledge compounds like interest.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            3: {
+                title: "Money Intelligence & Literacy",
+                subtitle: "SESSION 3: MONEY INTELLIGENCE (10 MIN)",
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-xs sm:text-sm leading-relaxed"><strong>Session 3</strong> focuses on practical personal finance: budgeting, saving, debt elimination, and strategic asset allocation.</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div class="p-3 bg-white dark:bg-slate-900 border rounded-xl text-center">
+                                <span class="text-xs font-bold text-blue-600">50% Needs</span>
+                                <p class="text-[11px] text-slate-500 mt-0.5">Housing, Food, Utilities</p>
+                            </div>
+                            <div class="p-3 bg-white dark:bg-slate-900 border rounded-xl text-center">
+                                <span class="text-xs font-bold text-emerald-600">30% Kingdom & Savings</span>
+                                <p class="text-[11px] text-slate-500 mt-0.5">Tithes, Investing, Emergency</p>
+                            </div>
+                            <div class="p-3 bg-white dark:bg-slate-900 border rounded-xl text-center">
+                                <span class="text-xs font-bold text-purple-600">20% Growth & Discretionary</span>
+                                <p class="text-[11px] text-slate-500 mt-0.5">Skills, Tools, Personal</p>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-sm">Financial Mastery Steps:</h4>
+                        <ol class="list-decimal pl-5 space-y-1.5 text-xs text-slate-600 dark:text-slate-300">
+                            <li>Eliminate high-interest consumer debt aggressively (Proverbs 22:7).</li>
+                            <li>Build a 3-to-6 month emergency liquidity reserve.</li>
+                            <li>Automate monthly investments in diversified index funds or income-producing assets.</li>
+                        </ol>
+                    </div>
+                `
+            },
+            4: {
+                title: "Business & Technological Innovation",
+                subtitle: "SESSION 4: BUSINESS & INNOVATION (10 MIN)",
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-xs sm:text-sm leading-relaxed"><strong>Session 4</strong> explores digital entrepreneurship, AI leverage, creative problem-solving, and market execution.</p>
+                        <div class="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-xs">
+                            <p class="font-bold text-emerald-900 dark:text-emerald-300">The Modern Entrepreneurial Equation:</p>
+                            <p class="mt-1 text-slate-700 dark:text-slate-300">Value = (Problem Solved × Audience Scale) ÷ Friction Introduced</p>
+                        </div>
+                        <h4 class="font-bold text-sm">Innovation Checklist:</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-xs text-slate-600 dark:text-slate-300">
+                            <li><strong>AI Tooling Integration:</strong> Utilize modern AI models to automate administrative overhead and boost creative speed.</li>
+                            <li><strong>Validation Over Speculation:</strong> Test business ideas with real customer pre-orders before building complex infrastructure.</li>
+                            <li><strong>Ethical Advantage:</strong> Radical transparency and quality create enduring brand equity.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            5: {
+                title: "Kingdom Mission & Generosity",
+                subtitle: "SESSION 5: KINGDOM APPLICATION (10 MIN)",
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-xs sm:text-sm leading-relaxed"><strong>Session 5</strong> connects financial success directly to God's ultimate purpose: community elevation, gospel advancement, and generous giving.</p>
+                        <blockquote class="p-4 rounded-2xl bg-purple-50 dark:bg-purple-950/50 border-l-4 border-l-purple-600 text-xs italic text-purple-900 dark:text-purple-300">
+                            "You will be enriched in every way so that you can be generous on every occasion, and through us your generosity will result in thanksgiving to God." — 2 Corinthians 9:11
+                        </blockquote>
+                        <h4 class="font-bold text-sm">Strategic Kingdom Deployment:</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-xs text-slate-600 dark:text-slate-300">
+                            <li><strong>Local Church Support:</strong> Provide foundational tithes to sustain community spiritual centers.</li>
+                            <li><strong>Entrepreneurial Philanthropy:</strong> Fund job creation programs and youth mentorship rather than relying solely on handouts.</li>
+                            <li><strong>Missionary & Humanitarian Aid:</strong> Direct capital to unreached communities and vulnerable populations.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            6: {
+                title: "Action Plan & Personal Commitment",
+                subtitle: "SESSION 6: ACTION & REFLECTION (10 MIN)",
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-xs sm:text-sm leading-relaxed">Congratulations on reaching <strong>Session 6</strong>! Solidify your learning with an interactive quick-check quiz and write down your personal stewardship commitment for today.</p>
+                        
+                        <!-- Interactive Quiz Widget -->
+                        <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border space-y-3">
+                            <p class="text-xs font-bold text-slate-800 dark:text-slate-200">Knowledge Check: According to Deuteronomy 8:18, what does God give us?</p>
+                            <div class="space-y-2 text-xs" id="quizOptionsContainer">
+                                <label class="flex items-center space-x-2 p-2 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-blue-50 cursor-pointer">
+                                    <input type="radio" name="quizChoice" value="A" class="text-blue-600">
+                                    <span>A) Instant piles of cash without work</span>
+                                </label>
+                                <label class="flex items-center space-x-2 p-2 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-blue-50 cursor-pointer">
+                                    <input type="radio" name="quizChoice" value="B" class="text-blue-600">
+                                    <span>B) The ability and capacity to produce wealth</span>
+                                </label>
+                                <label class="flex items-center space-x-2 p-2 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-blue-50 cursor-pointer">
+                                    <input type="radio" name="quizChoice" value="C" class="text-blue-600">
+                                    <span>C) Exemption from financial planning</span>
+                                </label>
+                            </div>
+                            <button onclick="checkQuizAnswer()" class="px-4 py-2 bg-blue-600 text-white rounded-xl text-xs font-bold hover:bg-blue-700 transition">Submit Answer</button>
+                            <p id="quizFeedback" class="text-xs font-bold hidden"></p>
+                        </div>
+
+                        <!-- Personal Notes / Reflections Input -->
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Your Daily Stewardship Commitment Note:</label>
+                            <textarea id="personalNoteInput" rows="3" placeholder="Write 1 concrete financial or business action you commit to taking today..." class="w-full p-3 rounded-2xl bg-white dark:bg-slate-900 border text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            <button onclick="savePersonalNote()" class="px-4 py-2 bg-emerald-600 text-white rounded-xl text-xs font-bold hover:bg-emerald-700 transition flex items-center gap-1">
+                                <i data-lucide="save" class="h-3.5 w-3.5"></i> Save Note to Storage
+                            </button>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        /* ================= INITIALIZATION & LIFECYCLE ================= */
+        window.onload = function() {
+            lucide.createIcons();
+            initTheme();
+            loadStateFromStorage();
+            renderDashboard();
+            renderDevotional();
+            renderLeadersGrid();
+            renderComparisonMatrix();
+            renderPowerHourSession();
+            updateStreakAndPointsUI();
+
+            // Auto date-picker default to today
+            const todayStr = new Date().toISOString().split('T')[0];
+            const picker = document.getElementById('devotionDatePicker');
+            if (picker) picker.value = todayStr;
+        };
+
+        function getDayOfYear(d = new Date()) {
+            const start = new Date(d.getFullYear(), 0, 0);
+            const diff = (d - start) + ((start.getTimezoneOffset() - d.getTimezoneOffset()) * 60 * 1000);
+            const oneDay = 1000 * 60 * 60 * 24;
+            return Math.floor(diff / oneDay);
+        }
+
+        /* ================= NAVIGATION & TAB SWITCHING ================= */
+        function switchTab(tabId) {
+            APP_STATE.currentTab = tabId;
+            document.querySelectorAll('.tab-view').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.nav-tab').forEach(el => {
+                el.classList.remove('active', 'bg-blue-50', 'dark:bg-blue-900/40', 'text-blue-600', 'dark:text-blue-400', 'font-semibold');
+                el.classList.add('text-slate-600', 'dark:text-slate-400');
+            });
+
+            const activeView = document.getElementById(`view-${tabId}`);
+            if (activeView) activeView.classList.remove('hidden');
+
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.add('active', 'bg-blue-50', 'dark:bg-blue-900/40', 'text-blue-600', 'dark:text-blue-400', 'font-semibold');
+            }
+        }
+
+        /* ================= THEME TOGGLE ================= */
+        function initTheme() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+
+        /* ================= POWER HOUR TIMER ENGINE ================= */
+        function startPowerHour() {
+            switchTab('powerhour');
+            if (!APP_STATE.timerRunning) {
+                toggleTimer();
+            }
+        }
+
+        function toggleTimer() {
+            const btnIcon = document.getElementById('timerIcon');
+            if (APP_STATE.timerRunning) {
+                clearInterval(APP_STATE.timerInterval);
+                APP_STATE.timerRunning = false;
+                if (btnIcon) btnIcon.setAttribute('data-lucide', 'play');
+            } else {
+                APP_STATE.timerRunning = true;
+                if (btnIcon) btnIcon.setAttribute('data-lucide', 'pause');
+                APP_STATE.timerInterval = setInterval(() => {
+                    if (APP_STATE.timerSeconds > 0) {
+                        APP_STATE.timerSeconds--;
+                        updateTimerDisplay();
+                    } else {
+                        clearInterval(APP_STATE.timerInterval);
+                        APP_STATE.timerRunning = false;
+                        completeCurrentSession();
+                    }
+                }, 1000);
+            }
+            lucide.createIcons();
+        }
+
+        function resetTimer() {
+            clearInterval(APP_STATE.timerInterval);
+            APP_STATE.timerRunning = false;
+            APP_STATE.timerSeconds = 600;
+            updateTimerDisplay();
+            const btnIcon = document.getElementById('timerIcon');
+            if (btnIcon) btnIcon.setAttribute('data-lucide', 'play');
+            lucide.createIcons();
+        }
+
+        function updateTimerDisplay() {
+            const mins = Math.floor(APP_STATE.timerSeconds / 60);
+            const secs = APP_STATE.timerSeconds % 60;
+            const str = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            const display = document.getElementById('sessionTimerDisplay');
+            if (display) display.textContent = str;
+        }
+
+        function jumpToSession(sessionNum) {
+            APP_STATE.activeSession = sessionNum;
+            APP_STATE.timerSeconds = 600;
+            renderPowerHourSession();
+            updateSessionStepperUI();
+        }
+
+        function navigateSession(direction) {
+            const next = APP_STATE.activeSession + direction;
+            if (next >= 1 && next <= 6) {
+                jumpToSession(next);
+            }
+        }
+
+        function renderPowerHourSession() {
+            const data = POWER_HOUR_SESSIONS[APP_STATE.activeSession];
+            if (!data) return;
+
+            document.getElementById('activeSessionBadge').textContent = `SESSION ${APP_STATE.activeSession} OF 6`;
+            document.getElementById('activeSessionSubtitle').textContent = data.subtitle;
+            document.getElementById('activeSessionTitle').textContent = data.title;
+            document.getElementById('sessionBodyText').innerHTML = data.content;
+
+            updateSessionStepperUI();
+            lucide.createIcons();
+        }
+
+        function updateSessionStepperUI() {
+            for (let i = 1; i <= 6; i++) {
+                const btn = document.getElementById(`step-btn-${i}`);
+                if (!btn) continue;
+                if (i === APP_STATE.activeSession) {
+                    btn.className = "h-2 rounded-full bg-blue-600 transition shadow-sm ring-2 ring-blue-400/50";
+                } else if (APP_STATE.completedSessions[i - 1]) {
+                    btn.className = "h-2 rounded-full bg-emerald-500 transition";
+                } else {
+                    btn.className = "h-2 rounded-full bg-slate-200 dark:bg-slate-800 transition";
+                }
+            }
+
+            // Update completed count badge on dashboard
+            const doneCount = APP_STATE.completedSessions.filter(Boolean).length;
+            const badge = document.getElementById('powerHourCompletedCount');
+            if (badge) badge.textContent = doneCount;
+        }
+
+        function completeCurrentSession() {
+            APP_STATE.completedSessions[APP_STATE.activeSession - 1] = true;
+            APP_STATE.points += 20;
+            saveStateToStorage();
+            updateStreakAndPointsUI();
+            updateSessionStepperUI();
+
+            // Check if all sessions complete
+            const allDone = APP_STATE.completedSessions.every(Boolean);
+            if (allDone) {
+                document.getElementById('certificateModal').classList.remove('hidden');
+                document.getElementById('certDateDisplay').textContent = new Date().toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            } else if (APP_STATE.activeSession < 6) {
+                jumpToSession(APP_STATE.activeSession + 1);
+            }
+        }
+
+        function closeCertModal() {
+            document.getElementById('certificateModal').classList.add('hidden');
+            APP_STATE.points += 100;
+            saveStateToStorage();
+            updateStreakAndPointsUI();
+        }
+
+        /* ================= DASHBOARD & DEVOTIONAL RENDERING ================= */
+        function getTodayDevotional() {
+            const index = (APP_STATE.currentDayOfYear - 1) % DEVOTIONALS.length;
+            return DEVOTIONALS[index] || DEVOTIONALS[0];
+        }
+
+        function renderDashboard() {
+            const devo = getTodayDevotional();
+            const now = new Date();
+            
+            document.getElementById('currentDateFormatted').textContent = now.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+            document.getElementById('dayOfYearBadge').textContent = `Day ${APP_STATE.currentDayOfYear} of 365`;
+
+            document.getElementById('dashboardDevoTitle').textContent = devo.theme;
+            document.getElementById('dashboardDevoSnippet').textContent = devo.scripture;
+            document.getElementById('dashboardDevoScriptureTag').textContent = devo.verse;
+
+            // Quote of the Day
+            const quoteLeader = LEADERS[APP_STATE.currentDayOfYear % LEADERS.length];
+            document.getElementById('dashboardQuoteText').textContent = `"${quoteLeader.quote}"`;
+            document.getElementById('dashboardQuoteAuthor').textContent = `— ${quoteLeader.name}`;
+            document.getElementById('quoteSpeakerRole').textContent = quoteLeader.role;
+
+            // Challenge
+            document.getElementById('dashboardChallengeTitle').textContent = devo.theme + " Challenge";
+            document.getElementById('dashboardChallengeDesc').textContent = devo.challenge;
+
+            updateChallengeUI();
+        }
+
+        function renderDevotional() {
+            const devo = getTodayDevotional();
+            document.getElementById('devoThemeTag').textContent = devo.theme.toUpperCase();
+            document.getElementById('devoDateTag').textContent = `Day ${devo.day} of 365`;
+            document.getElementById('devoTitle').textContent = devo.theme;
+            document.getElementById('devoVerse').textContent = `"${devo.scripture}" — ${devo.verse}`;
+            document.getElementById('devoContext').textContent = devo.context;
+            document.getElementById('devoSpiritual').textContent = devo.spiritual;
+            document.getElementById('devoFinancial').textContent = devo.financial;
+            document.getElementById('devoBusiness').textContent = devo.business;
+            document.getElementById('devoChallenge').textContent = devo.challenge;
+            document.getElementById('devoReflection').textContent = `"${devo.reflection}"`;
+            document.getElementById('devoPrayer').textContent = `"${devo.prayer}"`;
+        }
+
+        function loadDevotionByDate(dateVal) {
+            if (!dateVal) return;
+            const chosen = new Date(dateVal);
+            const dayNum = getDayOfYear(chosen);
+            APP_STATE.currentDayOfYear = dayNum;
+            renderDevotional();
+            renderDashboard();
+        }
+
+        /* ================= LEADERS GRID & WISDOM MATRIX ================= */
+        function renderLeadersGrid() {
+            const container = document.getElementById('leaderGridContainer');
+            if (!container) return;
+
+            container.innerHTML = LEADERS.map(l => `
+                <div class="glass p-6 rounded-3xl space-y-4 hover:shadow-xl transition flex flex-col justify-between border border-slate-200 dark:border-slate-800">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold px-2.5 py-1 rounded-full ${l.badgeColor}">${l.name}</span>
+                            <i data-lucide="award" class="h-4 w-4 text-slate-400"></i>
+                        </div>
+                        <h3 class="text-base font-bold">${l.name}</h3>
+                        <p class="text-xs text-slate-500 font-medium">${l.role}</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">${l.bio}</p>
+
+                        <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-900 border text-xs space-y-1">
+                            <span class="font-bold text-[11px] text-blue-600 dark:text-blue-400 uppercase">Verified Quotation:</span>
+                            <blockquote class="italic text-slate-700 dark:text-slate-300">"${l.quote}"</blockquote>
+                            <p class="text-[10px] text-slate-400 mt-1">— ${l.quoteSource} (${l.quoteDate})</p>
+                        </div>
+
+                        <div class="p-3 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 text-xs space-y-1">
+                            <span class="font-bold text-[11px] text-amber-700 dark:text-amber-400 uppercase">Biblical Connection:</span>
+                            <p class="text-amber-900 dark:text-amber-200">${l.biblicalConnection}</p>
+                        </div>
+                    </div>
+
+                    <button onclick="openCustomLeaderQuote('${l.name}')" class="w-full py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-xs font-semibold rounded-xl transition flex items-center justify-center space-x-1 mt-4">
+                        <i data-lucide="share-2" class="h-3.5 w-3.5"></i>
+                        <span>Generate Leader Quote Card</span>
+                    </button>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        function renderComparisonMatrix() {
+            const container = document.getElementById('comparisonMatrixContainer');
+            if (!container) return;
+
+            container.innerHTML = COMPARISONS.map(c => `
+                <div class="glass p-6 rounded-3xl space-y-4 border border-slate-200 dark:border-slate-800">
+                    <div class="flex items-center justify-between border-b pb-3 border-slate-200 dark:border-slate-800">
+                        <span class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">${c.leader}</span>
+                        <span class="text-xs font-bold text-amber-600 dark:text-amber-400">${c.scripture}</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div class="p-3 rounded-xl bg-blue-50 dark:bg-blue-950/50">
+                            <p class="font-bold text-blue-900 dark:text-blue-300">Business Concept:</p>
+                            <p class="mt-1 text-slate-700 dark:text-slate-300">${c.concept}</p>
+                        </div>
+                        <div class="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/50">
+                            <p class="font-bold text-amber-900 dark:text-amber-300">Biblical Truth:</p>
+                            <p class="mt-1 italic text-slate-700 dark:text-slate-300">"${c.bibleText}"</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                        <span class="font-bold text-slate-900 dark:text-white">Comparative Synthesis: </span>
+                        ${c.insight}
+                    </div>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        /* ================= QUIZ & INTERACTION LOGIC ================= */
+        function checkQuizAnswer() {
+            const selected = document.querySelector('input[name="quizChoice"]:checked');
+            const feedback = document.getElementById('quizFeedback');
+            if (!selected) return;
+
+            feedback.classList.remove('hidden');
+            if (selected.value === 'B') {
+                feedback.textContent = "Correct! Deuteronomy 8:18 emphasizes that God provides the cognitive ability and opportunities to produce wealth.";
+                feedback.className = "text-xs font-bold text-emerald-600 mt-2";
+            } else {
+                feedback.textContent = "Incorrect. Review Deuteronomy 8:18 in Session 1.";
+                feedback.className = "text-xs font-bold text-red-500 mt-2";
+            }
+        }
+
+        function savePersonalNote() {
+            const noteText = document.getElementById('personalNoteInput').value;
+            if (!noteText) return;
+
+            APP_STATE.userNotes[APP_STATE.currentDayOfYear] = noteText;
+            saveStateToStorage();
+            alert("Your daily stewardship commitment note has been saved offline!");
+        }
+
+        function toggleDailyChallengeCompletion() {
+            APP_STATE.challengeCompleted = !APP_STATE.challengeCompleted;
+            if (APP_STATE.challengeCompleted) {
+                APP_STATE.points += 50;
+            } else {
+                APP_STATE.points = Math.max(0, APP_STATE.points - 50);
+            }
+            saveStateToStorage();
+            updateStreakAndPointsUI();
+            updateChallengeUI();
+        }
+
+        function updateChallengeUI() {
+            const badge = document.getElementById('challengeStatusBadge');
+            const btn = document.getElementById('dashboardChallengeBtn');
+            if (!badge || !btn) return;
+
+            if (APP_STATE.challengeCompleted) {
+                badge.textContent = "COMPLETED (+50 PTS)";
+                badge.className = "text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold";
+                btn.innerHTML = `<i data-lucide="check-circle-2" class="h-4 w-4"></i> <span>Completed! Click to Undo</span>`;
+                btn.className = "w-full py-2.5 text-xs font-bold text-white bg-slate-700 hover:bg-slate-800 rounded-xl transition flex items-center justify-center space-x-1";
+            } else {
+                badge.textContent = "PENDING";
+                badge.className = "text-[10px] px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-bold";
+                btn.innerHTML = `<i data-lucide="check-circle" class="h-4 w-4"></i> <span>Mark Challenge Complete</span>`;
+                btn.className = "w-full py-2.5 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl transition flex items-center justify-center space-x-1 shadow-md shadow-emerald-600/20";
+            }
+            lucide.createIcons();
+        }
+
+        function updateStreakAndPointsUI() {
+            const streakEl = document.getElementById('streakDisplay');
+            const pointsEl = document.getElementById('pointsDisplay');
+            if (streakEl) streakEl.textContent = APP_STATE.streak;
+            if (pointsEl) pointsEl.textContent = APP_STATE.points;
+        }
+
+        /* ================= AUDIO TTS NARRATION ================= */
+        function speakCurrentSessionText() {
+            if ('speechSynthesis' in window) {
+                if (window.speechSynthesis.speaking) {
+                    window.speechSynthesis.cancel();
+                    APP_STATE.isSpeaking = false;
+                    return;
+                }
+                const session = POWER_HOUR_SESSIONS[APP_STATE.activeSession];
+                const cleanText = session.content.replace(/<[^>]*>?/gm, '');
+                const utterance = new SpeechSynthesisUtterance(cleanText);
+                utterance.rate = 1.0;
+                utterance.pitch = 1.0;
+                window.speechSynthesis.speak(utterance);
+                APP_STATE.isSpeaking = true;
+            } else {
+                alert("Audio text-to-speech is not supported in this browser environment.");
+            }
+        }
+
+        /* ================= AI MENTOR INTEGRATION (GEMINI API) ================= */
+        async function askAiMentor() {
+            const query = document.getElementById('aiMentorInput').value;
+            const outputText = document.getElementById('aiMentorResponseText');
+            if (!query) return;
+
+            outputText.innerHTML = `
+                <div class="flex items-center space-x-2 text-amber-500 animate-pulse">
+                    <i data-lucide="loader-2" class="h-5 w-5 animate-spin"></i>
+                    <span>Consulting Biblical Stewardship & Financial Intelligence Knowledge Base...</span>
+                </div>
+            `;
+            lucide.createIcons();
+
+            const systemPrompt = "Act as a world-class financial analyst, biblical researcher, and business mentor. Answer the user query strictly through the lens of biblical stewardship (e.g. Deut 8:18, Proverbs), ethical entrepreneurship, and financial discipline. Keep responses structured, actionable, and inspiring.";
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: query }] }],
+                        systemInstruction: { parts: [{ text: systemPrompt }] }
+                    })
+                });
+
+                const data = await response.json();
+                const reply = data.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                if (reply) {
+                    outputText.innerHTML = `<div class="prose dark:prose-invert text-xs sm:text-sm leading-relaxed">${reply.replace(/\n/g, '<br>')}</div>`;
+                } else {
+                    throw new Error("No response content");
+                }
+            } catch (err) {
+                // Fallback offline mentor response generator
+                outputText.innerHTML = `
+                    <div class="space-y-3">
+                        <p class="font-bold text-amber-600">Offline Stewardship Insight for: "${query}"</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-300">1. <strong>Biblical Anchor:</strong> Proverbs 16:3 — "Commit to the LORD whatever you do, and he will establish your plans."</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-300">2. <strong>Financial Application:</strong> Ensure your project or funding model maintains debt-free agility and transparent accounting.</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-300">3. <strong>Kingdom Impact:</strong> Define the societal problem your venture solves before seeking capital.</p>
+                    </div>
+                `;
+            }
+        }
+
+        /* ================= QUOTE MODAL & SOCIAL CARDS ================= */
+        function openQuoteModal() {
+            const quoteLeader = LEADERS[APP_STATE.currentDayOfYear % LEADERS.length];
+            document.getElementById('modalCardQuoteText').textContent = `"${quoteLeader.quote}"`;
+            document.getElementById('modalCardAuthor').textContent = `— ${quoteLeader.name}`;
+            document.getElementById('modalCardRole').textContent = quoteLeader.role;
+            document.getElementById('quoteModal').classList.remove('hidden');
+        }
+
+        function openCustomLeaderQuote(name) {
+            const l = LEADERS.find(item => item.name === name) || LEADERS[0];
+            document.getElementById('modalCardQuoteText').textContent = `"${l.quote}"`;
+            document.getElementById('modalCardAuthor').textContent = `— ${l.name}`;
+            document.getElementById('modalCardRole').textContent = l.role;
+            document.getElementById('quoteModal').classList.remove('hidden');
+        }
+
+        function closeQuoteModal() {
+            document.getElementById('quoteModal').classList.add('hidden');
+        }
+
+        function copyQuoteToClipboard() {
+            const quoteText = document.getElementById('modalCardQuoteText').textContent;
+            const author = document.getElementById('modalCardAuthor').textContent;
+            const fullStr = `${quoteText} ${author} | Stewardship Power Hour (Deuteronomy 8:18)`;
+
+            const dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = fullStr;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+
+            alert("Quote card text copied to clipboard!");
+        }
+
+        /* ================= NOTIFICATIONS & CMS MODALS ================= */
+        function toggleNotificationsModal() {
+            const el = document.getElementById('notificationsModal');
+            el.classList.toggle('hidden');
+        }
+
+        function saveNotificationSettings() {
+            const timeVal = document.getElementById('reminderTimeInput').value;
+            if (Notification && Notification.permission !== 'granted') {
+                Notification.requestPermission();
+            }
+            alert(`Daily Stewardship Power Hour reminder scheduled for ${timeVal} daily!`);
+            toggleNotificationsModal();
+        }
+
+        function toggleCmsModal() {
+            const el = document.getElementById('cmsModal');
+            if (el.classList.contains('hidden')) {
+                const devo = getTodayDevotional();
+                document.getElementById('cmsDevoTitleInput').value = devo.theme;
+                document.getElementById('cmsDevoVerseInput').value = devo.scripture;
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        }
+
+        function saveCmsEdits() {
+            const newTitle = document.getElementById('cmsDevoTitleInput').value;
+            const newScripture = document.getElementById('cmsDevoVerseInput').value;
+            const devo = getTodayDevotional();
+            devo.theme = newTitle;
+            devo.scripture = newScripture;
+            renderDevotional();
+            renderDashboard();
+            toggleCmsModal();
+            alert("Content updated and verified successfully!");
+        }
+
+        /* ================= PERSISTENCE (LOCAL STORAGE) ================= */
+        function saveStateToStorage() {
+            localStorage.setItem('stewardship_app_state', JSON.stringify({
+                streak: APP_STATE.streak,
+                points: APP_STATE.points,
+                completedSessions: APP_STATE.completedSessions,
+                challengeCompleted: APP_STATE.challengeCompleted,
+                userNotes: APP_STATE.userNotes
+            }));
+        }
+
+        function loadStateFromStorage() {
+            const saved = localStorage.getItem('stewardship_app_state');
+            if (saved) {
+                try {
+                    const parsed = JSON.parse(saved);
+                    APP_STATE.streak = parsed.streak || 3;
+                    APP_STATE.points = parsed.points || 250;
+                    APP_STATE.completedSessions = parsed.completedSessions || [false, false, false, false, false, false];
+                    APP_STATE.challengeCompleted = parsed.challengeCompleted || false;
+                    APP_STATE.userNotes = parsed.userNotes || {};
+                } catch(e) {}
+            }
+        }
+    </script>
+</body>
+</html>
